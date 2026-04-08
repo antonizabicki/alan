@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>alan | producer / engineer / creative director</title>
-    
+    <title>MlodyAV | producer / engineer / creative director</title>
     
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
-    
     <style>
         :root {
             --dark: #141414; 
@@ -129,7 +126,7 @@
             pointer-events: auto; display: flex; align-items: center; justify-content: center;
         }
         #particle-logo { width: 100%; height: 100%; object-fit: contain; }
-        #mobile-logo { display: none; fill: var(--dark); }
+        #mobile-logo { display: none; fill: currentColor; }
 
         .hero-floater { position: absolute; z-index: 3; font-weight: 500; font-size: 0.85rem; max-width: 250px; text-transform: uppercase; letter-spacing: 0.05em; will-change: transform, opacity; }
         .hf-1 { top: 15%; left: 5%; color: var(--dark); }
@@ -138,9 +135,9 @@
         .philosophy-scrolly { background-color: var(--bg-color); color: var(--dark); position: relative; }
         .phil-pin-container {
             height: 100vh; display: flex; align-items: center; justify-content: space-between;
-            padding: 0 8vw; overflow: hidden;
+            padding: 0 5vw; overflow: hidden; gap: 3vw;
         }
-        .phil-left { width: 35%; position: relative; display: flex; align-items: center; justify-content: flex-start; }
+        .phil-left { width: 15%; position: relative; display: flex; align-items: center; justify-content: flex-start; }
         
         .phil-number-wrapper { position: relative; width: 100%; height: 15vw; display: flex; align-items: center; }
         .phil-number { 
@@ -153,16 +150,27 @@
             will-change: transform, opacity;
         }
         
-        .phil-right { width: 55%; position: relative; height: 60vh; }
+        .phil-middle { width: 40%; position: relative; height: 60vh; }
         .phil-step {
-            position: absolute; top: 50%; left: 0; width: 100%;
-            transform: translateY(-50%); opacity: 0;
+            position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; height: max-content; width: 100%;
+            opacity: 0;
             display: flex; flex-direction: column; gap: 20px;
             will-change: transform, opacity;
         }
-        
-        .phil-step h3 { font-size: 4rem; line-height: 1; }
-        .phil-step p { font-size: 1.25rem; line-height: 1.6; color: #444; font-weight: 400; }
+        .phil-step h3 { font-size: 3.5rem; line-height: 1; }
+        .phil-step p { font-size: 1.15rem; line-height: 1.6; color: #444; font-weight: 400; }
+
+        .phil-right { width: 35%; position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; }
+        .phil-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            will-change: transform, opacity;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .phil-img img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 8px; filter: grayscale(100%); transition: filter 0.5s ease;
+        }
+        .phil-img img:hover { filter: grayscale(0%); }
 
         .theme-dark { background-color: var(--dark); color: var(--light); }
 
@@ -222,8 +230,6 @@
         .footer-socials a:hover { opacity: 0.5; }
         .footer-credit { font-family: 'Syne', sans-serif; opacity: 0.6; pointer-events: auto; padding: 10px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         @media (max-width: 768px) {
             * { cursor: auto !important; }
             .cursor-dot, .cursor-outline, .target-cursor-wrapper { display: none !important; }
@@ -232,25 +238,38 @@
             .hero-floater { position: static; max-width: 100%; text-align: center; margin-bottom: 20px; font-size: 0.75rem; }
             .hf-1 { order: 1; }
             .hf-2 { order: 3; text-align: center; margin-top: 20px; }
-            .logo-canvas-wrapper { height: auto; order: 2; margin: 30px 0; }
             
+            .logo-canvas-wrapper { height: auto; order: 2; margin: 40px 0; display: flex; justify-content: center; width: 100vw; }
             #particle-logo { display: none; }
-            #mobile-logo { display: block; width: 80vw; max-width: 300px; height: auto; margin: 0 auto; }
+            #mobile-logo { display: block; width: 90vw; max-width: 500px; height: auto; margin: 0 auto; color: var(--dark); }
 
             .phil-pin-container { flex-direction: column; justify-content: flex-start; padding: 0; position: relative; }
             
-            .phil-left { position: absolute; width: 100%; top: 12vh; left: 0; height: auto; z-index: 2; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+            .phil-left { position: absolute; width: 100%; top: 14vh; left: 0; height: auto; z-index: 3; pointer-events: none; display: flex; align-items: center; justify-content: center; }
             .phil-number-wrapper { height: 40px; display: flex; justify-content: center; align-items: center; position: relative; width: 100%; }
-            .phil-number { font-size: 2rem; text-align: center; position: absolute; width: 100%; line-height: 1; color: var(--dark); -webkit-text-stroke: 0; opacity: 0; font-weight: 800; }
+            .phil-number { font-size: 3rem; text-align: center; position: absolute; width: 100%; line-height: 1; color: var(--dark); -webkit-text-stroke: 0; opacity: 0; font-weight: 800; }
             
-            .phil-right { width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: 1; display: flex; align-items: center; justify-content: center; }
-            .phil-step { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); text-align: center; display: flex; flex-direction: column; gap: 15px; padding: 0 7vw; opacity: 0; }
+            .phil-middle { width: 100%; height: 25vh; position: absolute; top: 22vh; left: 0; z-index: 2; }
+            .phil-step { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; height: max-content; width: 100%; text-align: center; display: flex; flex-direction: column; gap: 15px; padding: 0 7vw; opacity: 0; }
             .phil-step h3 { font-size: 2.2rem; margin-bottom: 0; line-height: 1.1; }
-            .phil-step p { font-size: 1.05rem; }
+            .phil-step p { font-size: 1rem; }
 
-            .work-horizontal { padding: 10vh 0; }
-            .work-horizontal-title { font-size: 2.5rem; padding-left: 5vw; text-align: center; margin-bottom: 5vh; }
-            .work-card { width: 85vw; height: 55vh; padding: 25px; }
+            /* Zmiana: idealne proporcje i wyższa, optymalna pozycja */
+            .phil-right { width: 100%; height: 45vh; position: absolute; bottom: 6vh; left: 0; z-index: 1; display: flex; align-items: center; justify-content: center; }
+            .phil-img { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; width: 75%; max-width: 320px; aspect-ratio: 4/5; height: auto; opacity: 0; display: flex; align-items: center; justify-content: center; will-change: transform, opacity; }
+            .phil-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+            .work-horizontal { padding: 5vh 0; overflow: hidden; }
+            .work-horizontal-title { font-size: 2.5rem; padding-left: 5vw; text-align: left; margin-bottom: 3vh; }
+            
+            .work-scroll-wrapper { 
+                display: flex; flex-direction: row; gap: 5vw; padding: 0 5vw 5vh 5vw; 
+                width: 100vw; overflow-x: auto; overflow-y: hidden;
+                scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; 
+            }
+            .work-scroll-wrapper::-webkit-scrollbar { display: none; }
+            
+            .work-card { width: 80vw; height: 50vh; flex-shrink: 0; scroll-snap-align: center; padding: 25px; }
             .work-card h4 { font-size: 1.8rem; }
 
             .showcase { padding: 5vh 5vw; }
@@ -275,14 +294,11 @@
 </head>
 <body>
     
-    
     <div class="noise-overlay"></div>
 
-    
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    
     <div class="target-cursor-wrapper" id="target-cursor">
         <div class="target-cursor-dot" id="target-dot"></div>
         <div class="target-cursor-corner corner-tl"></div>
@@ -291,35 +307,34 @@
         <div class="target-cursor-corner corner-bl"></div>
     </div>
 
-    
     <div id="context-menu">
         <div style="font-size: 0.75rem; opacity: 0.5; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.05em;">Socials</div>
-        <a href="https://www.instagram.com/mlodyav/" class="hover-target">Instagram</a>
-        <a href="#" class="hover-target">Twitter</a>
-        <a href="#" class="hover-target">Spotify</a>
-        <a href="#" class="hover-target">SoundCloud</a>
+        <a href="https://www.instagram.com/mlodyav/" target="_blank" class="hover-target">Instagram</a>
+        <a href="https://www.tiktok.com/@mlodyav" target="_blank" class="hover-target">TikTok</a>
+        <a href="https://open.spotify.com/artist/0ZuA6GP3Su8grZDdpQ1zgr?si=NMAPYWlxR5qUQ0e9Q8Q8Jw" target="_blank" class="hover-target">Spotify</a>
+        <a href="https://www.linkedin.com/in/alan-varosyan-a85361294/" target="_blank" class="hover-target">LinkedIn</a>
     </div>
 
-    
     <section class="hero" id="hero-section">
         <div class="hero-floater hf-1 fade-up">producer / engineer / creative director</div>
         
         <div class="logo-canvas-wrapper" id="logo-wrapper">
-            
             <canvas id="particle-logo"></canvas>
             
-            <svg id="mobile-logo" viewBox="0 0 440 91" xmlns="http://www.w3.org/2000/svg">
-                <path d="M48.117 90.816C38.829 90.816 30.573 89.526 23.349 86.946C16.125 84.28 10.406 80.453 6.192 75.465C2.064 70.477 0 64.457 0 57.405C0 50.009 2.064 43.817 6.192 38.829C10.406 33.841 16.125 30.1 23.349 27.606C30.573 25.112 38.829 23.865 48.117 23.865C58.437 23.865 67.338 25.284 74.82 28.122C82.388 30.874 88.193 34.787 92.235 39.861C96.363 44.849 98.427 50.697 98.427 57.405C98.427 62.393 97.266 66.951 94.944 71.079C92.622 75.121 89.268 78.647 84.882 81.657C80.496 84.581 75.207 86.86 69.015 88.494C62.823 90.042 55.857 90.816 48.117 90.816ZM59.727 71.208C66.263 71.208 72.24 70.821 77.658 70.047C83.162 69.187 87.548 67.768 90.816 65.79C94.17 63.812 95.847 61.017 95.847 57.405C95.847 53.707 94.17 50.869 90.816 48.891C87.548 46.913 83.162 45.537 77.658 44.763C72.24 43.989 66.263 43.602 59.727 43.602C50.955 43.602 44.161 44.763 39.345 47.085C34.529 49.321 32.121 52.761 32.121 57.405C32.121 60.415 33.196 62.952 35.346 65.016C37.496 67.08 40.635 68.628 44.763 69.66C48.891 70.692 53.879 71.208 59.727 71.208ZM95.847 25.8H126.807V89.01H97.653C97.653 89.01 97.481 88.021 97.137 86.043C96.879 84.065 96.578 81.227 96.234 77.529C95.976 73.831 95.847 69.488 95.847 64.5V25.8Z"/>
-                <path d="M140.413 0H171.373V89.01H140.413V0Z"/>
-                <path d="M231.791 90.816C222.503 90.816 214.247 89.526 207.023 86.946C199.799 84.28 194.08 80.453 189.866 75.465C185.738 70.477 183.674 64.457 183.674 57.405C183.674 50.009 185.738 43.817 189.866 38.829C194.08 33.841 199.799 30.1 207.023 27.606C214.247 25.112 222.503 23.865 231.791 23.865C242.111 23.865 251.012 25.284 258.494 28.122C266.062 30.874 271.867 34.787 275.909 39.861C280.037 44.849 282.101 50.697 282.101 57.405C282.101 62.393 280.94 66.951 278.618 71.079C276.296 75.121 272.942 78.647 268.556 81.657C264.17 84.581 258.881 86.86 252.689 88.494C246.497 90.042 239.531 90.816 231.791 90.816ZM243.401 71.208C249.937 71.208 255.914 70.821 261.332 70.047C266.836 69.187 271.222 67.768 274.49 65.79C277.844 63.812 279.521 61.017 279.521 57.405C279.521 53.707 277.844 50.869 274.49 48.891C271.222 46.913 266.836 45.537 261.332 44.763C255.914 43.989 249.937 43.602 243.401 43.602C234.629 43.602 227.835 44.763 223.019 47.085C218.203 49.321 215.795 52.761 215.795 57.405C215.795 60.415 216.87 62.952 219.02 65.016C221.17 67.08 224.309 68.628 228.437 69.66C232.565 70.692 237.553 71.208 243.401 71.208ZM279.521 25.8H310.481V89.01H281.327C281.327 89.01 281.155 88.021 280.811 86.043C280.553 84.065 280.252 81.227 279.908 77.529C279.65 73.831 279.521 69.488 279.521 64.5V25.8Z"/>
-                <path d="M322.152 25.8H353.112V89.01H322.152V25.8ZM399.552 23.865C404.626 23.865 409.528 24.424 414.258 25.542C418.988 26.574 423.202 28.38 426.9 30.96C430.684 33.54 433.694 37.066 435.93 41.538C438.166 46.01 439.284 51.643 439.284 58.437V89.01H408.324V62.307C408.324 55.857 406.647 51.299 403.293 48.633C399.939 45.881 393.876 44.505 385.104 44.505C380.46 44.505 375.945 45.021 371.559 46.053C367.259 47.085 363.389 48.332 359.949 49.794C356.509 51.17 353.8 52.546 351.822 53.922L351.564 49.02C351.908 47.472 353.069 45.322 355.047 42.57C357.111 39.732 360.078 36.894 363.948 34.056C367.818 31.218 372.677 28.81 378.525 26.832C384.459 24.854 391.468 23.865 399.552 23.865Z"/>
+            <svg id="mobile-logo" viewBox="0 0 1151 155" xmlns="http://www.w3.org/2000/svg">
+                <path d="M138.156 106.836H112.056L207.06 8.7H250.56V120.06H207.06V44.196L220.11 49.59L151.38 120.06H99.18L30.276 49.764L43.5 44.37V120.06H0V8.7H43.5L138.156 106.836Z" fill="currentColor"/>
+                <path d="M269.714 0H311.474V120.06H269.714V0Z" fill="currentColor"/>
+                <path d="M407.235 122.67C388.791 122.67 373.421 121.162 361.125 118.146C348.945 115.13 339.781 110.316 333.633 103.704C327.601 97.092 324.585 88.392 324.585 77.604C324.585 66.816 327.601 58.116 333.633 51.504C339.781 44.776 348.945 39.904 361.125 36.888C373.421 33.756 388.791 32.19 407.235 32.19C425.563 32.19 440.759 33.756 452.823 36.888C465.003 39.904 474.109 44.776 480.141 51.504C486.173 58.116 489.189 66.816 489.189 77.604C489.189 88.392 486.173 97.092 480.141 103.704C474.109 110.316 465.003 115.13 452.823 118.146C440.759 121.162 425.563 122.67 407.235 122.67ZM407.235 97.44C415.819 97.44 423.011 96.744 428.811 95.352C434.611 93.844 439.019 91.64 442.035 88.74C445.051 85.724 446.559 82.012 446.559 77.604C446.559 73.196 445.051 69.484 442.035 66.468C439.135 63.452 434.785 61.19 428.985 59.682C423.185 58.174 415.935 57.42 407.235 57.42C398.651 57.42 391.343 58.174 385.311 59.682C379.395 61.19 374.871 63.452 371.739 66.468C368.723 69.368 367.215 73.08 367.215 77.604C367.215 82.012 368.723 85.724 371.739 88.74C374.755 91.64 379.221 93.844 385.137 95.352C391.169 96.744 398.535 97.44 407.235 97.44Z" fill="currentColor"/>
+                <path d="M562.726 122.496C550.198 122.496 539.062 120.756 529.318 117.276C519.574 113.68 511.86 108.518 506.176 101.79C500.608 95.062 497.824 86.942 497.824 77.43C497.824 67.454 500.608 59.102 506.176 52.374C511.86 45.646 519.574 40.6 529.318 37.236C539.062 33.872 550.198 32.19 562.726 32.19C573.166 32.19 582.562 33.292 590.914 35.496C599.266 37.584 606.399 40.658 612.315 44.718C618.231 48.662 622.756 53.418 625.888 58.986C629.02 64.554 630.586 70.702 630.586 77.43C630.586 84.158 629.02 90.306 625.888 95.874C622.756 101.326 618.231 106.082 612.315 110.142C606.399 114.086 599.266 117.16 590.914 119.364C582.562 121.452 573.166 122.496 562.726 122.496ZM578.385 96.048C587.201 96.048 595.264 95.526 602.572 94.482C609.996 93.322 615.912 91.408 620.32 88.74C624.844 86.072 627.106 82.302 627.106 77.43C627.106 72.442 624.844 68.614 620.32 65.946C615.912 63.278 609.996 61.422 602.572 60.378C595.264 59.334 587.201 58.812 578.385 58.812C566.553 58.812 557.389 60.378 550.893 63.51C544.397 66.526 541.15 71.166 541.15 77.43C541.15 81.49 542.6 84.912 545.5 87.696C548.4 90.48 552.634 92.568 558.202 93.96C563.77 95.352 570.497 96.048 578.385 96.048ZM627.106 0H668.866V120.06H629.542C629.078 117.392 628.556 113.1 627.976 107.184C627.396 101.152 627.106 94.424 627.106 87V0Z" fill="currentColor"/>
+                <path d="M680.116 34.8H724.486L775.294 116.58L739.276 120.06L680.116 34.8ZM840.196 34.8L755.458 154.86H712.828L749.194 105.618L795.826 34.8H840.196Z" fill="currentColor"/>
+                <path d="M842.936 103.182V77.082H961.952V103.182H842.936ZM803.96 120.06L878.606 8.7H926.978L1002.32 120.06H954.47L889.916 20.358H915.842L851.81 120.06H803.96Z" fill="currentColor"/>
+                <path d="M1022.91 120.06L955.397 8.7H1004.47L1062.06 115.71H1044.31L1101.91 8.7H1150.28L1083.46 120.06H1022.91Z" fill="currentColor"/>
             </svg>
         </div>
 
         <div class="hero-floater hf-2 fade-up">Fusion Music. No Limits.<br>Intercontinental bayers.<br>One person. Full control.</div>
     </section>
 
-    
     <section class="philosophy-scrolly" id="philosophy-scrolly">
         <div class="phil-pin-container">
             <div class="phil-left">
@@ -329,7 +344,8 @@
                     <div class="phil-number num-3">03</div>
                 </div>
             </div>
-            <div class="phil-right">
+            
+            <div class="phil-middle">
                 <div class="phil-step step-1">
                     <h3>Intercontinental Sound</h3>
                     <p>PLxGBxAM. From childhood to now. Fusion Music I take the best from every sound and merge it into one.</p>
@@ -343,16 +359,19 @@
                     <p>Jack of none trades. Master of all. Instead of: Producer, Recording Engineer, Mix Engineer, Master Engineer. You get one person. Full control. Better sound. Faster delivery.</p>
                 </div>
             </div>
+
+            <div class="phil-right">
+                <div class="phil-img img-1"><img src="img0001.png" alt="Philosophy 01"></div>
+                <div class="phil-img img-2"><img src="img0002.png" alt="Philosophy 02"></div>
+                <div class="phil-img img-3"><img src="img0003.png" alt="Philosophy 03"></div>
+            </div>
         </div>
     </section>
 
-    
     <div class="theme-dark">
-        
         <section class="work-horizontal" id="work-horizontal">
             <h2 class="work-horizontal-title">selected work</h2>
             <div class="work-scroll-wrapper">
-                
                  
                 <div class="work-card hover-target">
                     <div class="work-card-bg" style="background-image: url('zdj1.jpg');"></div>
@@ -382,10 +401,19 @@
                 </div>
 
                 <div class="work-card hover-target">
-                    <div class="work-card-bg" style="background-image: url('zdj4.png');"></div>
+                    <div class="work-card-bg" style="background-image: url('jeleel.png');"></div>
                     <div class="work-card-overlay"></div>
                     <div class="work-card-content">
-                        <h4>Jeleel & Ivorian Doll</h4>
+                        <h4>Jeleel</h4>
+                        <p>Prod / Rec / Mix / Master</p>
+                    </div>
+                </div>
+
+                <div class="work-card hover-target">
+                    <div class="work-card-bg" style="background-image: url('ivorian.jpg');"></div>
+                    <div class="work-card-overlay"></div>
+                    <div class="work-card-content">
+                        <h4>Ivorian Doll</h4>
                         <p>Prod / Rec / Mix / Master</p>
                     </div>
                 </div>
@@ -407,8 +435,6 @@
                         <p>Production</p>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
@@ -435,7 +461,6 @@
         </section>
     </div>
 
-    
     <div class="services-bio-wrapper" id="services-bio-wrapper">
         <section class="services">
             <h2 class="section-title-sm cursor-target">services</h2>
@@ -449,37 +474,34 @@
             <div style="margin-top: 40px; padding: 30px; border: 1px solid rgba(20,20,20,0.2); color: var(--dark);">
                 <h4 class="cursor-target" style="margin-bottom: 10px; font-size: 1.5rem; display: inline-block;">Need something custom?</h4>
                 <br>
-                <a href="mailto:contact@alan.com" class="hover-target cursor-target" style="font-weight: 600; text-decoration: underline; pointer-events: auto; display: inline-block; padding: 5px 0;">Get a quote</a>
+                <a href="mailto:contact@mlodyav.com" class="hover-target cursor-target" style="font-weight: 600; text-decoration: underline; pointer-events: auto; display: inline-block; padding: 5px 0;">Get a quote</a>
             </div>
         </section>
 
         <section class="bio">
-            <h2 class="section-title-sm cursor-target">about alan</h2>
-            <img src="img.jpg" alt="alan portrait" class="hover-target cursor-target" loading="lazy">
+            <h2 class="section-title-sm cursor-target">about MlodyAV</h2>
+            <img src="img.jpg" alt="mlodyav portrait" class="hover-target cursor-target" loading="lazy">
             <p class="bio-text cursor-target">
-                From early exposure to multiple music cultures - Polish, Armenian, England and Russian - alan developed a unique fusion sound. His productions blend genres, moods and influences into a cohesive sonic identity. No boundaries. No rules. Only sound.
+                From early exposure to multiple music cultures - Polish, Armenian, England and Russian - MlodyAV developed a unique fusion sound. His productions blend genres, moods and influences into a cohesive sonic identity. No boundaries. No rules. Only sound.
             </p>
         </section>
     </div>
 
-    
     <section class="final-cta theme-dark" id="final-cta">
         <h2>let's create something different.</h2>
-        <a href="mailto:contact@alan.com" class="btn hover-target cursor-target">Start a project</a>
+        <a href="mailto:contact@mlodyav.com" class="btn hover-target cursor-target">Start a project</a>
     </section>
 
-    
     <footer class="theme-dark" id="footer-section">
         <div class="footer-socials">
-            <a href="https://www.instagram.com/mlodyav/" class="hover-target cursor-target">Instagram</a>
-            <a href="#" class="hover-target cursor-target">Twitter</a>
-            <a href="#" class="hover-target cursor-target">Spotify</a>
-            <a href="#" class="hover-target cursor-target">SoundCloud</a>
+            <a href="https://www.instagram.com/mlodyav/" target="_blank" class="hover-target cursor-target">Instagram</a>
+            <a href="https://www.tiktok.com/@mlodyav" target="_blank" class="hover-target cursor-target">TikTok</a>
+            <a href="https://open.spotify.com/artist/0ZuA6GP3Su8grZDdpQ1zgr?si=NMAPYWlxR5qUQ0e9Q8Q8Jw" target="_blank" class="hover-target cursor-target">Spotify</a>
+            <a href="https://www.linkedin.com/in/alan-varosyan-a85361294/" target="_blank" class="hover-target cursor-target">LinkedIn</a>
         </div>
         <a href="https://witrynaodzera.pl" target="_blank" class="footer-credit hover-target cursor-target">©2026 WITRYNAODZERA™</a>
     </footer>
 
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
@@ -499,8 +521,6 @@
         }
         requestAnimationFrame(raf);
 
-
-
         gsap.to(".hero", {
             scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
             opacity: 0, y: -100
@@ -516,35 +536,33 @@
             }
         });
 
-        gsap.set(".step-2, .step-3, .num-2, .num-3", { opacity: 0, y: 50 });
-        gsap.set(".step-1", { opacity: 1, y: 0 });
-        gsap.set(".num-1", { opacity: 1, y: 0 }); 
+        gsap.set(".step-2, .step-3, .num-2, .num-3, .img-2, .img-3", { opacity: 0, y: 50 });
+        gsap.set(".step-1, .num-1, .img-1", { opacity: 1, y: 0 });
 
-        philTl.to([".step-1", ".num-1"], { opacity: 0, y: -50, duration: 1 })
-              
-              .to([".step-2", ".num-2"], { opacity: 1, y: 0, duration: 1 }, "-=0.2")
-              .to([".step-2", ".num-2"], { opacity: 0, y: -50, duration: 1 }, "+=0.5")
-              
-              .to([".step-3", ".num-3"], { opacity: 1, y: 0, duration: 1 }, "-=0.2");
+        philTl.to([".step-1", ".num-1", ".img-1"], { opacity: 0, y: -50, duration: 1 })
+              .to([".step-2", ".num-2", ".img-2"], { opacity: 1, y: 0, duration: 1 }, "-=0.2")
+              .to([".step-2", ".num-2", ".img-2"], { opacity: 0, y: -50, duration: 1 }, "+=0.5")
+              .to([".step-3", ".num-3", ".img-3"], { opacity: 1, y: 0, duration: 1 }, "-=0.2");
 
-
-        const workWrapper = document.querySelector('.work-scroll-wrapper');
-        const getScrollAmount = () => -(workWrapper.scrollWidth - window.innerWidth + (window.innerWidth * 0.1));
         
-        gsap.to(workWrapper, {
-            x: getScrollAmount,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#work-horizontal",
-                start: "center center",
-                end: () => `+=${workWrapper.scrollWidth}`, 
-                scrub: 1,
-                pin: true,
-                invalidateOnRefresh: true
-            }
-        });
+        const workWrapper = document.querySelector('.work-scroll-wrapper');
+        
+        if (!isMobile) {
+            const getScrollAmount = () => -(workWrapper.scrollWidth - window.innerWidth + (window.innerWidth * 0.1));
+            
+            gsap.to(workWrapper, {
+                x: getScrollAmount,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#work-horizontal",
+                    start: "center center",
+                    end: () => `+=${workWrapper.scrollWidth}`, 
+                    scrub: 1,
+                    pin: true,
+                    invalidateOnRefresh: true
+                }
+            });
 
-        if(!isMobile) {
             const defDot = document.querySelector('.cursor-dot');
             const defOutline = document.querySelector('.cursor-outline');
             const hoverTargets = document.querySelectorAll('.hover-target, a, .work-card, .track');
@@ -579,9 +597,7 @@
             gsap.set(tCorners, { x: i => defPos[i].x, y: i => defPos[i].y });
             gsap.set(targetCursor, { xPercent: -50, yPercent: -50 });
 
-            const spinTween = gsap.to(targetCursor, { rotation: 360, duration: 2, repeat: -1, ease: "none" });
-
-            [finalSection, footerSection, servicesBioSection].forEach(sec => {
+            const spinTween = gsap.to(targetCursor, { rotation: 360, duration: 2, repeat: -1, ease: "none" });[finalSection, footerSection, servicesBioSection].forEach(sec => {
                 if(!sec) return;
                 sec.addEventListener('mouseenter', () => {
                     defDot.style.opacity = '0'; defOutline.style.opacity = '0';
@@ -649,52 +665,100 @@
             let particles =[];
             let mouse = { x: -1000, y: -1000, radius: 80 }; 
             let isCanvasVisible = true;
+            let resizeTimeout;
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { isCanvasVisible = entry.isIntersecting; });
             }, { threshold: 0 });
             observer.observe(logoWrapper);
-            
-            const svgRaw = `<svg viewBox="0 0 440 91" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M48.117 90.816C38.829 90.816 30.573 89.526 23.349 86.946C16.125 84.28 10.406 80.453 6.192 75.465C2.064 70.477 0 64.457 0 57.405C0 50.009 2.064 43.817 6.192 38.829C10.406 33.841 16.125 30.1 23.349 27.606C30.573 25.112 38.829 23.865 48.117 23.865C58.437 23.865 67.338 25.284 74.82 28.122C82.388 30.874 88.193 34.787 92.235 39.861C96.363 44.849 98.427 50.697 98.427 57.405C98.427 62.393 97.266 66.951 94.944 71.079C92.622 75.121 89.268 78.647 84.882 81.657C80.496 84.581 75.207 86.86 69.015 88.494C62.823 90.042 55.857 90.816 48.117 90.816ZM59.727 71.208C66.263 71.208 72.24 70.821 77.658 70.047C83.162 69.187 87.548 67.768 90.816 65.79C94.17 63.812 95.847 61.017 95.847 57.405C95.847 53.707 94.17 50.869 90.816 48.891C87.548 46.913 83.162 45.537 77.658 44.763C72.24 43.989 66.263 43.602 59.727 43.602C50.955 43.602 44.161 44.763 39.345 47.085C34.529 49.321 32.121 52.761 32.121 57.405C32.121 60.415 33.196 62.952 35.346 65.016C37.496 67.08 40.635 68.628 44.763 69.66C48.891 70.692 53.879 71.208 59.727 71.208ZM95.847 25.8H126.807V89.01H97.653C97.653 89.01 97.481 88.021 97.137 86.043C96.879 84.065 96.578 81.227 96.234 77.529C95.976 73.831 95.847 69.488 95.847 64.5V25.8Z" fill="#141414"/><path d="M140.413 0H171.373V89.01H140.413V0Z" fill="#141414"/><path d="M231.791 90.816C222.503 90.816 214.247 89.526 207.023 86.946C199.799 84.28 194.08 80.453 189.866 75.465C185.738 70.477 183.674 64.457 183.674 57.405C183.674 50.009 185.738 43.817 189.866 38.829C194.08 33.841 199.799 30.1 207.023 27.606C214.247 25.112 222.503 23.865 231.791 23.865C242.111 23.865 251.012 25.284 258.494 28.122C266.062 30.874 271.867 34.787 275.909 39.861C280.037 44.849 282.101 50.697 282.101 57.405C282.101 62.393 280.94 66.951 278.618 71.079C276.296 75.121 272.942 78.647 268.556 81.657C264.17 84.581 258.881 86.86 252.689 88.494C246.497 90.042 239.531 90.816 231.791 90.816ZM243.401 71.208C249.937 71.208 255.914 70.821 261.332 70.047C266.836 69.187 271.222 67.768 274.49 65.79C277.844 63.812 279.521 61.017 279.521 57.405C279.521 53.707 277.844 50.869 274.49 48.891C271.222 46.913 266.836 45.537 261.332 44.763C255.914 43.989 249.937 43.602 243.401 43.602C234.629 43.602 227.835 44.763 223.019 47.085C218.203 49.321 215.795 52.761 215.795 57.405C215.795 60.415 216.87 62.952 219.02 65.016C221.17 67.08 224.309 68.628 228.437 69.66C232.565 70.692 237.553 71.208 243.401 71.208ZM279.521 25.8H310.481V89.01H281.327C281.327 89.01 281.155 88.021 280.811 86.043C280.553 84.065 280.252 81.227 279.908 77.529C279.65 73.831 279.521 69.488 279.521 64.5V25.8Z" fill="#141414"/><path d="M322.152 25.8H353.112V89.01H322.152V25.8ZM399.552 23.865C404.626 23.865 409.528 24.424 414.258 25.542C418.988 26.574 423.202 28.38 426.9 30.96C430.684 33.54 433.694 37.066 435.93 41.538C438.166 46.01 439.284 51.643 439.284 58.437V89.01H408.324V62.307C408.324 55.857 406.647 51.299 403.293 48.633C399.939 45.881 393.876 44.505 385.104 44.505C380.46 44.505 375.945 45.021 371.559 46.053C367.259 47.085 363.389 48.332 359.949 49.794C356.509 51.17 353.8 52.546 351.822 53.922L351.564 49.02C351.908 47.472 353.069 45.322 355.047 42.57C357.111 39.732 360.078 36.894 363.948 34.056C367.818 31.218 372.677 28.81 378.525 26.832C384.459 24.854 391.468 23.865 399.552 23.865Z" fill="#141414"/></svg>`;
-            const img = new Image();
-            img.src = 'data:image/svg+xml;base64,' + btoa(svgRaw);
 
             function initParticles() {
                 const rect = logoWrapper.getBoundingClientRect();
-                canvas.width = rect.width * window.devicePixelRatio;
-                canvas.height = rect.height * window.devicePixelRatio;
-                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+                if(rect.width === 0 || rect.height === 0) return;
+
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
                 
-                const w = rect.width;
-                const h = rect.height;
+                const w = Math.floor(rect.width);
+                const h = Math.floor(rect.height);
+                
+                const svgW = 1151;
+                const svgH = 155;
                 
                 const tempCanvas = document.createElement('canvas');
                 const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true });
-                tempCanvas.width = w; tempCanvas.height = h;
+                tempCanvas.width = svgW; 
+                tempCanvas.height = svgH;
                 
-                const imgRatio = 440 / 91;
-                let drawW = w * 0.7;
+                const imgRatio = svgW / svgH;
+                let drawW = w * 0.8;
                 let drawH = drawW / imgRatio;
-                if(drawH > h * 0.45) { drawH = h * 0.45; drawW = drawH * imgRatio; }
+                
+                if(drawH > h * 0.45) { 
+                    drawH = h * 0.45; 
+                    drawW = drawH * imgRatio; 
+                }
+                
                 const drawX = (w - drawW) / 2;
                 const drawY = (h - drawH) / 2;
+                
+                const scaleX = drawW / svgW;
+                const scaleY = drawH / svgH;
 
-                tempCtx.drawImage(img, drawX, drawY, drawW, drawH);
-                const imgData = tempCtx.getImageData(0, 0, w, h).data;
+                const svgRaw = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgW} ${svgH}" width="${svgW}" height="${svgH}">
+                    <path fill="#141414" d="M138.156 106.836H112.056L207.06 8.7H250.56V120.06H207.06V44.196L220.11 49.59L151.38 120.06H99.18L30.276 49.764L43.5 44.37V120.06H0V8.7H43.5L138.156 106.836Z"/>
+                    <path fill="#141414" d="M269.714 0H311.474V120.06H269.714V0Z"/>
+                    <path fill="#141414" d="M407.235 122.67C388.791 122.67 373.421 121.162 361.125 118.146C348.945 115.13 339.781 110.316 333.633 103.704C327.601 97.092 324.585 88.392 324.585 77.604C324.585 66.816 327.601 58.116 333.633 51.504C339.781 44.776 348.945 39.904 361.125 36.888C373.421 33.756 388.791 32.19 407.235 32.19C425.563 32.19 440.759 33.756 452.823 36.888C465.003 39.904 474.109 44.776 480.141 51.504C486.173 58.116 489.189 66.816 489.189 77.604C489.189 88.392 486.173 97.092 480.141 103.704C474.109 110.316 465.003 115.13 452.823 118.146C440.759 121.162 425.563 122.67 407.235 122.67ZM407.235 97.44C415.819 97.44 423.011 96.744 428.811 95.352C434.611 93.844 439.019 91.64 442.035 88.74C445.051 85.724 446.559 82.012 446.559 77.604C446.559 73.196 445.051 69.484 442.035 66.468C439.135 63.452 434.785 61.19 428.985 59.682C423.185 58.174 415.935 57.42 407.235 57.42C398.651 57.42 391.343 58.174 385.311 59.682C379.395 61.19 374.871 63.452 371.739 66.468C368.723 69.368 367.215 73.08 367.215 77.604C367.215 82.012 368.723 85.724 371.739 88.74C374.755 91.64 379.221 93.844 385.137 95.352C391.169 96.744 398.535 97.44 407.235 97.44Z"/>
+                    <path fill="#141414" d="M562.726 122.496C550.198 122.496 539.062 120.756 529.318 117.276C519.574 113.68 511.86 108.518 506.176 101.79C500.608 95.062 497.824 86.942 497.824 77.43C497.824 67.454 500.608 59.102 506.176 52.374C511.86 45.646 519.574 40.6 529.318 37.236C539.062 33.872 550.198 32.19 562.726 32.19C573.166 32.19 582.562 33.292 590.914 35.496C599.266 37.584 606.399 40.658 612.315 44.718C618.231 48.662 622.756 53.418 625.888 58.986C629.02 64.554 630.586 70.702 630.586 77.43C630.586 84.158 629.02 90.306 625.888 95.874C622.756 101.326 618.231 106.082 612.315 110.142C606.399 114.086 599.266 117.16 590.914 119.364C582.562 121.452 573.166 122.496 562.726 122.496ZM578.385 96.048C587.201 96.048 595.264 95.526 602.572 94.482C609.996 93.322 615.912 91.408 620.32 88.74C624.844 86.072 627.106 82.302 627.106 77.43C627.106 72.442 624.844 68.614 620.32 65.946C615.912 63.278 609.996 61.422 602.572 60.378C595.264 59.334 587.201 58.812 578.385 58.812C566.553 58.812 557.389 60.378 550.893 63.51C544.397 66.526 541.15 71.166 541.15 77.43C541.15 81.49 542.6 84.912 545.5 87.696C548.4 90.48 552.634 92.568 558.202 93.96C563.77 95.352 570.497 96.048 578.385 96.048ZM627.106 0H668.866V120.06H629.542C629.078 117.392 628.556 113.1 627.976 107.184C627.396 101.152 627.106 94.424 627.106 87V0Z"/>
+                    <path fill="#141414" d="M680.116 34.8H724.486L775.294 116.58L739.276 120.06L680.116 34.8ZM840.196 34.8L755.458 154.86H712.828L749.194 105.618L795.826 34.8H840.196Z"/>
+                    <path fill="#141414" d="M842.936 103.182V77.082H961.952V103.182H842.936ZM803.96 120.06L878.606 8.7H926.978L1002.32 120.06H954.47L889.916 20.358H915.842L851.81 120.06H803.96Z"/>
+                    <path fill="#141414" d="M1022.91 120.06L955.397 8.7H1004.47L1062.06 115.71H1044.31L1101.91 8.7H1150.28L1083.46 120.06H1022.91Z"/>
+                </svg>`;
+
+                const img = new Image();
+                img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgRaw);
                 
-                particles =[];
-                const gap = 5; 
-                
-                for(let y = 0; y < h; y += gap) {
-                    for(let x = 0; x < w; x += gap) {
-                        const alpha = imgData[(y * w + x) * 4 + 3];
-                        if(alpha > 128) { particles.push({ x: x, y: y, originX: x, originY: y, vx: 0, vy: 0, size: 1.8 }); }
+                img.onload = () => {
+                    tempCtx.clearRect(0, 0, svgW, svgH);
+                    tempCtx.drawImage(img, 0, 0); 
+                    
+                    const imgData = tempCtx.getImageData(0, 0, svgW, svgH).data;
+                    particles =[];
+                    
+                    const nativeGap = 8; 
+                    
+                    for(let y = 0; y < svgH; y += nativeGap) {
+                        for(let x = 0; x < svgW; x += nativeGap) {
+                            const alpha = imgData[(y * svgW + x) * 4 + 3];
+                            
+                            if(alpha > 128) { 
+                                const targetX = drawX + (x * scaleX);
+                                const targetY = drawY + (y * scaleY);
+                                
+                                particles.push({ 
+                                    x: targetX, 
+                                    y: targetY, 
+                                    originX: targetX, 
+                                    originY: targetY, 
+                                    vx: 0, 
+                                    vy: 0, 
+                                    size: Math.max(1.2, (nativeGap * scaleX) * 0.45) 
+                                }); 
+                            }
+                        }
                     }
-                }
+                };
             }
 
-            img.onload = () => { initParticles(); animateParticles(); };
-            window.addEventListener('resize', initParticles);
+            initParticles();
+            animateParticles();
+
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initParticles, 200);
+            });
 
             logoWrapper.addEventListener('mousemove', (e) => {
                 if(!isCanvasVisible) return;
@@ -714,18 +778,23 @@
                     let p = particles[i];
                     let dx = mouse.x - p.x;
                     let dy = mouse.y - p.y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
                     
-                    if(dist < mouse.radius) {
+                    let dist = Math.sqrt(dx * dx + dy * dy) || 0.001; 
+                    
+                    if(dist < mouse.radius && dist > 0.1) {
                         let force = (mouse.radius - dist) / mouse.radius;
-                        p.vx -= (dx / dist) * force * 3; p.vy -= (dy / dist) * force * 3;
+                        p.vx -= (dx / dist) * force * 3; 
+                        p.vy -= (dy / dist) * force * 3;
                     }
                     
-                    p.vx += (p.originX - p.x) * 0.1; p.vy += (p.originY - p.y) * 0.1;
-                    p.vx *= 0.8; p.vy *= 0.8;
-                    p.x += p.vx; p.y += p.vy;
+                    p.vx += (p.originX - p.x) * 0.1; 
+                    p.vy += (p.originY - p.y) * 0.1;
+                    p.vx *= 0.8; 
+                    p.vy *= 0.8;
+                    p.x += p.vx; 
+                    p.y += p.vy;
 
-                    ctx.moveTo(p.x, p.y);
+                    ctx.moveTo(p.x + p.size, p.y); 
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 }
                 ctx.fill();
